@@ -1,5 +1,7 @@
 # CF Submission Stats
 
+om patel 
+
 A Chrome extension that analyzes Codeforces submissions and shows:
 
 - Runtime percentile
