@@ -1,0 +1,382 @@
+/* ── Animations ──────────────────────────────────────────────────────────────── */
+@keyframes cfSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cfFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ── Container & Button ──────────────────────────────────────────────────────── */
+#cf-stats-wrapper {
+  margin: 24px 0;
+  font-family: "Inter", "Segoe UI", Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+  box-sizing: border-box;
+}
+
+#cf-stats-wrapper * {
+  box-sizing: inherit;
+}
+
+#cf-stats-btn {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #1e1e2f 0%, #11111c 100%);
+  color: #a5b4fc;
+  border: 1px solid rgba(165, 180, 252, 0.15);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  letter-spacing: 0.5px;
+}
+
+#cf-stats-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2a2a40 0%, #1a1a2e 100%);
+  border-color: rgba(165, 180, 252, 0.4);
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(165, 180, 252, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+#cf-stats-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+#cf-stats-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  filter: grayscale(0.6);
+}
+
+.cf-btn-icon {
+  font-size: 16px;
+  filter: hue-rotate(340deg) saturate(1.2);
+}
+
+/* ── Progress Box ────────────────────────────────────────────────────────────── */
+.cf-progress-box {
+  margin-top: 16px;
+  background: rgba(15, 15, 25, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px 20px;
+  text-align: center;
+  animation: cfFadeIn 0.4s ease-out;
+}
+
+.cf-progress-msg {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-bottom: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.cf-progress-track {
+  height: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.cf-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  border-radius: 6px;
+  transition: width 0.3s ease;
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.cf-progress-pct {
+  font-size: 12px;
+  color: #a78bfa;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ── Main Stats Box ──────────────────────────────────────────────────────────── */
+.cf-box {
+  margin-top: 16px;
+  background: rgba(18, 18, 28, 0.95);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  /* Better fit for narrow sidebars */
+  color: #e2e8f0;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  animation: cfSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  container-type: inline-size;
+  /* Enable container queries */
+}
+
+.cf-box-header {
+  display: flex;
+  flex-direction: column;
+  /* Stack vertically for narrow spaces */
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cf-box-left {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow wrapping if needed */
+  align-items: center;
+  gap: 10px;
+}
+
+.cf-box-title {
+  font-size: 17px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.3px;
+}
+
+.cf-handle-badge {
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cf-handle-badge.cf-no-login {
+  background: rgba(148, 163, 184, 0.1);
+  color: #94a3b8;
+  border-color: rgba(148, 163, 184, 0.2);
+}
+
+.cf-sample-badge {
+  background: rgba(139, 92, 246, 0.1);
+  color: #c4b5fd;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  white-space: nowrap;
+  /* Prevent breaking into multiple lines */
+}
+
+.cf-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* Default to single column for sidebars */
+  gap: 16px;
+}
+
+@container (min-width: 450px) {
+  .cf-grid {
+    grid-template-columns: 1fr 1fr;
+    /* Switch to side-by-side if there's room */
+  }
+}
+
+/* ── Cards ───────────────────────────────────────────────────────────────────── */
+.cf-card {
+  background: linear-gradient(160deg, rgba(30, 30, 45, 0.6) 0%, rgba(20, 20, 30, 0.4) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cf-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+.cf-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.cf-card-head {
+  font-size: 13px;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── Percentile Area ─────────────────────────────────────────────────────────── */
+.cf-card-pct {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.cf-pct-num {
+  font-size: 38px;
+  /* Slightly smaller to fit narrow spaces */
+  font-weight: 900;
+  line-height: 1;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+  margin-bottom: 10px;
+  text-shadow: 0 0 25px currentColor;
+  letter-spacing: -1.5px;
+}
+
+.cf-pct-sym {
+  font-size: 20px;
+  opacity: 0.6;
+  vertical-align: super;
+  letter-spacing: 0;
+}
+
+.cf-pct-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border: 1px solid currentColor;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.cf-pct-sub {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ── Value Bar ───────────────────────────────────────────────────────────────── */
+.cf-bar-track {
+  height: 8px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  margin-top: 16px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.cf-bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ── Separator & Table ───────────────────────────────────────────────────────── */
+.cf-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  margin: 20px 0;
+}
+
+.cf-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cf-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.cf-row:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.cf-row-yours {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cf-row-yours:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.cf-lbl {
+  color: #94a3b8;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  gap: 8px;
+}
+
+.cf-val {
+  font-family: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+/* ── Error Box ───────────────────────────────────────────────────────────────── */
+.cf-error {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  color: #fca5a5;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  animation: cfFadeIn 0.3s ease-out;
+}
