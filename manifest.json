@@ -1,5 +1,5 @@
 {
-  "manifest_version": 1,
+  "manifest_version": 11,
   "name": "CF Submission Stats",
   "version": "2.0",
   "description": "See how your solution ranks against all AC submissions on any Codeforces problem",
